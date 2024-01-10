@@ -1,0 +1,13 @@
+name: auth
+version: '3'
+
+services:
+  brightauth:
+    container_name: brightauth
+    build: .
+    ports:
+      - 9000:9000
+    environment:
+      MODE: 'development'
+      HOST: '0.0.0.0'
+      PORT: 9000
