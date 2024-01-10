@@ -3,7 +3,7 @@ import pkce
 
 
 class AuthController:
-    def __init__(self) -> None:
+    def __init__(self):
         pass
 
     def callback(self) -> flask.Response:
