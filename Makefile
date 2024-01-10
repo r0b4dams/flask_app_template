@@ -1,4 +1,4 @@
-.PHONY: setup start add save clean
+.PHONY: setup dev add save clean build
 
 ORG=r0b4dams
 NAME=brightauth
@@ -22,7 +22,8 @@ clean:
 	@rm -rf .venv
 	@find . -type f -name "*.pyc" -delete
 
-build: docker-build docker-push
+
+push: docker-build docker-push
 
 docker-build: setup
 	@echo "$(ORG)/$(NAME):$(VERSION)"
@@ -31,8 +32,8 @@ docker-build: setup
 docker-push: 
 	@docker push $(ORG)/$(NAME):$(VERSION)
 
-docker-run: docker-build
+docker-up: docker-build
 	@docker compose up --build 
 
-docker-stop:
+docker-down:
 	@docker compose down
