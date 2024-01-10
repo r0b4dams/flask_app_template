@@ -6,24 +6,30 @@ auth_controller = AuthController()
 
 
 @auth_blueprint.route("/callback", methods=["GET"])
-def callback(): return auth_controller.callback()
+def callback():
+    return auth_controller.callback()
 
 
 @auth_blueprint.route("/login", methods=["GET"])
-def login(): return auth_controller.login()
+def login():
+    return auth_controller.login()
 
 
 @auth_blueprint.route("/logout", methods=["GET"])
-def logout(): return auth_controller.logout()
+def logout():
+    return auth_controller.logout()
 
 
 @auth_blueprint.route("/refresh", methods=["POST"])
-def refresh(): return auth_controller.refresh()
+def refresh():
+    return auth_controller.refresh()
 
 
 @auth_blueprint.route("/register", methods=["GET"])
-def register(): return auth_controller.register()
+def register():
+    return auth_controller.register()
 
 
 @auth_blueprint.route("/user", methods=["GET"])
-def user(): return auth_controller.user()
+def user():
+    return auth_controller.user()
