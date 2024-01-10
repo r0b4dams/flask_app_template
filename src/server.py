@@ -3,12 +3,13 @@ from routes.auth import auth_blueprint
 
 
 class Server:
-    def __init__(self) -> None:
-        self.app = Flask(__name__)
+    def __init__(self, port) -> None:
+        self._port = port
+        self._app = Flask(__name__)
+        self._load_blueprints()
 
-    def load_blueprints(self):
-        self.app.register_blueprint(auth_blueprint)
+    def _load_blueprints(self):
+        self._app.register_blueprint(auth_blueprint)
 
     def run(self):
-        self.load_blueprints()
-        self.app.run(debug=True)
+        self._app.run(debug=True, port=self._port)
