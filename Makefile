@@ -23,10 +23,9 @@ clean:
 	@find . -type f -name "*.pyc" -delete
 
 
-push: docker-build docker-push
+image: docker-build docker-push
 
 docker-build: setup
-	@echo "$(ORG)/$(NAME):$(VERSION)"
 	@docker build -t $(ORG)/$(NAME):$(VERSION) .
 
 docker-push: 
