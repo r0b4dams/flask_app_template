@@ -10,7 +10,6 @@ class RestServer(BaseApplication):
 
     def __init__(self, config: dict[str, str] = {}, blueprints: list[Blueprint] = []):
         self.app = Flask(__name__)
-
         self.config = config
         self.register_blueprints(blueprints)
         super().__init__()

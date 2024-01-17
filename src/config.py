@@ -7,7 +7,7 @@ port = os.environ.get("PORT", "9000")
 
 
 def number_of_workers():
-    return (multiprocessing.cpu_count() * 2) + 1
+    return multiprocessing.cpu_count()
 
 
 config = {
