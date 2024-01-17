@@ -10,13 +10,14 @@ class RestServer(BaseApplication):
 
     def __init__(self, config: dict[str, str] = {}, blueprints: list[Blueprint] = []):
         self.app = Flask(__name__)
+
         self.config = config
         self.register_blueprints(blueprints)
         super().__init__()
 
     def listen(self):
         """
-        Start the server and run forever.
+        Starts the server and runs forever.
 
         In production mode, runs the Gunicorn WSGI server.
         Otherwise, runs the Flask app dev server
@@ -38,13 +39,14 @@ class RestServer(BaseApplication):
 
     def load_config(self):
         """
-        Pass the config properties to the BaseApplication Config instance.
+        Passes the config properties to the BaseApplication Config instance.
         """
         # filter valid gunicorn properties
         gunicorn_config = {
             key: value for key, value in self.config.items()
             if key in self.cfg.settings and value is not None
         }
+
         # set properties with the Config set method
         for key, value in gunicorn_config.items():
             self.cfg.set(key.lower(), value)
