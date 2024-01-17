@@ -8,6 +8,6 @@ services:
     ports:
       - 9000:9000
     environment:
-      MODE: 'development'
+      MODE: 'production' # comment out to use dev server
       HOST: '0.0.0.0'
       PORT: 9000
