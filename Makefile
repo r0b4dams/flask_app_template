@@ -31,7 +31,7 @@ docker-build: setup
 docker-push: 
 	@docker push $(ORG)/$(NAME):$(VERSION)
 
-docker-up: docker-build
+docker-up: 
 	@docker compose up --build 
 
 docker-down:
