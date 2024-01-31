@@ -1,5 +1,5 @@
 import os
-import multiprocessing
+# import multiprocessing
 
 mode = os.environ.get("MODE", "development")
 host = os.environ.get("HOST", "localhost")
@@ -7,7 +7,8 @@ port = os.environ.get("PORT", "9000")
 
 
 def number_of_workers():
-    return multiprocessing.cpu_count()
+    # return multiprocessing.cpu_count()
+    return 4
 
 
 config = {
