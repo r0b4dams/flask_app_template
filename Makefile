@@ -1,22 +1,26 @@
-.PHONY: setup dev add save clean build
+.PHONY: setup dev add save clean
 
 ORG=r0b4dams
-NAME=brightauth
-VERSION := $(shell cat _version.txt)
+NAME=flask_app_template
+VERSION := $(shell cat version.txt || echo '0.0.1')
 
-setup: _requirements.txt clean
-	@python3 -m venv .venv
-	@.venv/bin/pip install -r _requirements.txt
+install: clean
+	test -f requirements.txt || touch requirements.txt
+	python3 -m venv .venv
+	.venv/bin/pip install -r requirements.txt
 
-dev: setup .venv/bin/python3
-	@.venv/bin/python3 src/main.py
+dev: .venv
+	@.venv/bin/python3 src
+
+preview: .venv
+	@export MODE=production && .venv/bin/python3 src
 
 add: .venv
 	@.venv/bin/pip install $(pkg)
 	@$(MAKE) save
 
 save: .venv
-	@.venv/bin/pip freeze > _requirements.txt
+	@.venv/bin/pip freeze > requirements.txt
 
 clean:
 	@rm -rf .venv
@@ -25,14 +29,8 @@ clean:
 
 image: docker-build docker-push
 
-docker-build: setup
+docker-build: install
 	@docker build -t $(ORG)/$(NAME):$(VERSION) .
 
 docker-push: 
 	@docker push $(ORG)/$(NAME):$(VERSION)
-
-docker-up: 
-	@docker compose up --build 
-
-docker-down:
-	@docker compose down
