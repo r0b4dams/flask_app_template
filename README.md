@@ -1,14 +1,14 @@
 # flask_app_template
 
-A template repo with a simple setup for a flask application. Uses gunicorn as the production WSGI server.
+A template repo with a simple setup for a [Flask](https://flask.palletsprojects.com/en/3.0.x/) application. Uses [Gunicorn](https://gunicorn.org/) as the production WSGI server.
 
 ## Installation
 
-Run `make` to set up a virtual environment and install dependencies
+Run `make` to set up a virtual environment and install dependencies.
 
 ## Usage
 
-After installation run `make dev` to spin up the development server
+After installation, run `make dev` to spin up the development server.
 
 | command        | description                                              |
 | -------------- | -------------------------------------------------------- |
